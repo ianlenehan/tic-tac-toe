@@ -1,0 +1,31 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: red;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  /*height: 80vh;*/
+  /*width: 50%;*/
+  background-color: white;
+  /*margin: 50px 100px;*/
+}
+
+.main {
+  flex: 1;
+}
+
+.leftbar {
+  flex: 0 0 12em;
+  order: -1;
+  background-color: blue;
+}
+
+.rightbar {
+  flex: 0 0 12em;
+  background-color: blue;
+}
