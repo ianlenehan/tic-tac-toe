@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  background-color: red;
+}
+
+.container {
+  box-sizing: border-box;
+  flex-grow: 1;
+  height: 80vh;
+  /*width: 50%;*/
+  background-color: white;
+  margin: 50px 100px;
+}
