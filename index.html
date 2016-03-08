@@ -4,34 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <title>Tic Tac Toe</title>
-  <script src="js/main.js"></script>
+
   <script src="js/jquery.js"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js"></script>
+  <script src="media/sweetalert-master/dist/sweetalert.min.js"></script>
+
+
+  <link rel="stylesheet" href="css/stylev2.css">
+  <link rel="stylesheet" href="css/reset.css">
+
+
+  <link rel="stylesheet" type="text/css" href="media/sweetalert-master/dist/sweetalert.css">
 </head>
 
 <body>
   <div class="container">
+    <div class="left">
+      <p>Game Mode</p>
+      <button class="mode" id="tp">Two Player</button>
+      <button class="mode" id="sp">Single Player</button>
+    </div>
     <div class="main">
-      <div class="board">
-        <div class="row" id="first">
-          <div id="A1" class="spot"></div>
-          <div id="B1" class="spot"></div>
-          <div id="C1" class="spot"></div>
-        </div>
-        <div class="row" id="second">
-          <div id="A2" class="spot"></div>
-          <div id="B2" class="spot"></div>
-          <div id="C2" class="spot"></div>
-        </div>
-        <div class="row" id="third">
-          <div id="A3" class="spot"></div>
-          <div id="B3" class="spot"></div>
-          <div id="C3" class="spot"></div>
-        </div>
+      <ul class="board">
+        <li class="spot" id="a1">1</li>
+        <li class="spot" id="b1">1</li>
+        <li class="spot" id="c1">1</li>
+      </ul>
+      <ul class="board">
+        <li class="spot" id="a2">1</li>
+        <li class="spot" id="b2">1</li>
+        <li class="spot" id="c2">1</li>
+      </ul>
+      <ul class="board">
+        <li class="spot" id="a3">1</li>
+        <li class="spot" id="b3">1</li>
+        <li class="spot" id="c3">1</li>
+      </ul>
+      <p class="chalk">Select a starting player:</p>
+      <div class="buttons">
+
+        <!-- <button class="button">Player X</button> -->
+        <div id="xscore">(0)</div>
+        <img id="X" src="media/x.png" alt="">
+        <img id="O" src="media/O.png" alt="">
+        <div id="yscore">(0)</div>
+        <!-- <button id="playerB" class="button">Player B</button> -->
       </div>
     </div>
-    <div class="leftbar"></div>
-    <div class="rightbar"></div>
+<div class="right"></div>
+  </div>
+
+  <!-- <div class="leftbar"></div>
+  <div class="rightbar"></div> -->
   </div>
 
 </body>

@@ -6,6 +6,9 @@
 var boardSize = 3;
 var totalScoreX = 0;
 var totalScoreO = 0;
+var expectedMoves = boardSize * boardSize;
+var totalMoves = 0;
+var mode = 'twoPlayer';
 
 var numberOfArrays = function(boardSize) {
   var diff = boardSize - 3;
@@ -15,20 +18,9 @@ var numberOfArrays = function(boardSize) {
 
 var arrays = numberOfArrays(boardSize);
 
-var piecesPlayerA = ['A', 'A', 'A', 'A', 'A'];
-var piecesPlayerB = ['B', 'B', 'B', 'B', 'B'];
+// var piecesPlayerA = ['A', 'A', 'A', 'A', 'A'];
+// var piecesPlayerB = ['B', 'B', 'B', 'B', 'B'];
 var Board = {
-  s0: ['a1', 'b1', 'c1'], // row 1
-  s1: ['a2', 'b2', 'c2'], // row 2
-  s2: ['a3', 'b3', 'c3'], // row 3
-  s3: ['a1', 'a2', 'a3'], // col 1
-  s4: ['b1', 'b2', 'b3'], // col 2
-  s5: ['c1', 'c2', 'c3'], // col 3
-  s6: ['a1', 'b2', 'c3'], // diag 1, top L to bottom R
-  s7: ['c1', 'b2', 'a3'] // diag 2, top R to bottom L
-}
-
-var backupBoard = {
   s0: ['a1', 'b1', 'c1'], // row 1
   s1: ['a2', 'b2', 'c2'], // row 2
   s2: ['a3', 'b3', 'c3'], // row 3
@@ -80,6 +72,18 @@ $('.spot').on('click', function () {
       }
   });
 
+$('#tp').on('click', function () {
+  $('#tp').css({color: 'rgba(255,255,255,0.8)', border: 'solid rgba(255,255,255,0.8) 1px'});
+  $('#sp').css({color: 'rgba(255,255,255,0.5)', border: 'solid rgba(255,255,255,0.5) 1px'});
+  mode = 'twoPlayer';
+});
+
+$('#sp').on('click', function () {
+  $('#sp').css({color: 'rgba(255,255,255,0.8)', border: 'solid rgba(255,255,255,0.8) 1px'});
+  $('#tp').css({color: 'rgba(255,255,255,0.5)', border: 'solid rgba(255,255,255,0.5) 1px'});
+  mode = 'singlePlayer';
+});
+
 });
 
 // because we can't compare arrays in JS, create a function that will do this via loops
@@ -102,13 +106,26 @@ var arrayEquals = function(board, moves) {
 }
 
 var clearBoard = function () {
-  Board = backupBoard; // this resets the arrays
+  Board = {
+    s0: ['a1', 'b1', 'c1'], // row 1
+    s1: ['a2', 'b2', 'c2'], // row 2
+    s2: ['a3', 'b3', 'c3'], // row 3
+    s3: ['a1', 'a2', 'a3'], // col 1
+    s4: ['b1', 'b2', 'b3'], // col 2
+    s5: ['c1', 'c2', 'c3'], // col 3
+    s6: ['a1', 'b2', 'c3'], // diag 1, top L to bottom R
+    s7: ['c1', 'b2', 'a3'] // diag 2, top R to bottom L
+  }; // this resets the arrays
   $('li').text(1).css({color: 'rgba(231, 43, 197, 0)'});
 };
 
 // after each move has been made, check if that player has won yet
 // go through all rows, columns and diagonals to see if there are a match to the win combo
 var checkPlayer = function(player) {
+  totalMoves++
+  if (totalMoves >= expectedMoves) {
+    swal({   title: "We have a draw!",   text: "Try again!",   imageUrl: "/Users/IRL/Projects/myProjects/media/XO.png" });
+  }
   var winCombo = [player, player, player]
   for (var i = 0; i < arrays; i++) {
     var match = arrayEquals(Board['s' + i.toString()], winCombo);
