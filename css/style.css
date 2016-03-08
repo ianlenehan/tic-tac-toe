@@ -12,11 +12,38 @@ body {
   /*height: 80vh;*/
   /*width: 50%;*/
   background-color: white;
-  /*margin: 50px 100px;*/
+  margin: 100px 50px 50px 50px;
 }
 
 .main {
   flex: 1;
+}
+
+.board {
+  display: flex;
+  background-color: yellow;
+  min-height: 50vh;
+  min-width: 50vh;
+  align-items: center;
+  justify-content: center;
+  /*box-sizing: border-box;*/
+  /*flex: 1;*/
+  flex-grow: 1
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  /*flex-wrap: wrap; don't need this as it's default */
+  justify-content: space-between;
+  align-items: center;
+  border-color: 1px solid black;
+}
+
+.spot {
+  background-color: grey;
+  display: flex;
+  flex-grow: 1;
 }
 
 .leftbar {

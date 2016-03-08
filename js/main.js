@@ -4,6 +4,9 @@
 
 // based on the above calculations, this function should make the game flexible in terms of how bug the board is
 var boardSize = 3;
+var totalScoreX = 0;
+var totalScoreO = 0;
+
 var numberOfArrays = function(boardSize) {
   var diff = boardSize - 3;
   var arrays = (diff * 2) + 8;
@@ -16,19 +19,24 @@ var piecesPlayerA = ['A', 'A', 'A', 'A', 'A'];
 var piecesPlayerB = ['B', 'B', 'B', 'B', 'B'];
 var Board = {
   s0: ['a1', 'b1', 'c1'], // row 1
-  s1: ['a2', 'b2', 'b3'], // row 2
+  s1: ['a2', 'b2', 'c2'], // row 2
   s2: ['a3', 'b3', 'c3'], // row 3
   s3: ['a1', 'a2', 'a3'], // col 1
   s4: ['b1', 'b2', 'b3'], // col 2
   s5: ['c1', 'c2', 'c3'], // col 3
   s6: ['a1', 'b2', 'c3'], // diag 1, top L to bottom R
   s7: ['c1', 'b2', 'a3'] // diag 2, top R to bottom L
-    // s3: [this.s0.slice(0, 1), this.s1.slice(0, 1), this.s2.slice(0, 1)]
-    // s3: [var this.s0[0], var this.s1[0], var this.s2[0]], // col 1
-    // 4: [this.[0][0], this.[1][0], this.[2][0]], //col 2
-    // 5: [this.[0][0], this.[1][0], this.[2][0]], //col 3
-    // 6: [this.[0][0], this.[1][1], this.[2][3]], //diagonal 1
-    // 7: [this.[0][2], this.[1][1], this.[2][0]], //diagonal 2
+}
+
+var backupBoard = {
+  s0: ['a1', 'b1', 'c1'], // row 1
+  s1: ['a2', 'b2', 'c2'], // row 2
+  s2: ['a3', 'b3', 'c3'], // row 3
+  s3: ['a1', 'a2', 'a3'], // col 1
+  s4: ['b1', 'b2', 'b3'], // col 2
+  s5: ['c1', 'c2', 'c3'], // col 3
+  s6: ['a1', 'b2', 'c3'], // diag 1, top L to bottom R
+  s7: ['c1', 'b2', 'a3'] // diag 2, top R to bottom L
 }
 
 // need a fn to count number of times the player appears in each array
@@ -46,6 +54,33 @@ var Board = {
 //   return count;
 // }
 
+$(document).ready(function () {
+// fn to change the start player from X to O and back
+$('#X').on('click', function () {
+        player = 'X';
+        var $setCursorX = $('body').css( 'cursor', 'url(/Users/IRL/Projects/myProjects/media/xcursor.png), auto' );
+});
+
+$('#O').on('click', function () {
+        player = 'O';
+        var $setCursorO = $('body').css( 'cursor', 'url(/Users/IRL/Projects/myProjects/media/Ocursor.png), auto' );
+});
+
+$('.spot').on('click', function () {
+      $(this).text(player).css({'color': 'white'});
+      var position = $(this).attr('id');
+      // console.log(player);
+      makeMove(player, position)
+      if (player === 'X') {
+        player = 'O'
+        $('body').css( 'cursor', 'url(/Users/IRL/Projects/myProjects/media/Ocursor.png), auto' );
+      } else if (player === 'O') {
+        player = 'X';
+        $('body').css( 'cursor', 'url(/Users/IRL/Projects/myProjects/media/xcursor.png), auto' );
+      }
+  });
+
+});
 
 // because we can't compare arrays in JS, create a function that will do this via loops
 // this function is called by the checkPlayer function
@@ -62,9 +97,14 @@ var arrayEquals = function(board, moves) {
     console.log(board);
     return true;
   }
-  console.log(count);
+  // console.log(count);
   return false;
 }
+
+var clearBoard = function () {
+  Board = backupBoard; // this resets the arrays
+  $('li').text(1).css({color: 'rgba(231, 43, 197, 0)'});
+};
 
 // after each move has been made, check if that player has won yet
 // go through all rows, columns and diagonals to see if there are a match to the win combo
@@ -73,11 +113,20 @@ var checkPlayer = function(player) {
   for (var i = 0; i < arrays; i++) {
     var match = arrayEquals(Board['s' + i.toString()], winCombo);
     if (match) {
-      console.log(player + " wins!");
-      return true;
+      if (player === 'X') {
+      totalScoreX += 1;
+      $('#xscore').text("(" + totalScoreX + ")")
+    } else {
+      totalScoreO += 1;
+      $('#yscore').text("(" + totalScoreO + ")")
+    }
+      swal({   title: "We have a winner!",   text: player + " has won this round.",   imageUrl: "/Users/IRL/Projects/myProjects/media/XO.png" });
+      clearBoard();
+      console.log(totalScoreX, totalScoreO, player);
+      return player;
     }
   }
-  console.log("Not this time");
+  // console.log("Not this time");
   return false;
 };
 
@@ -88,15 +137,18 @@ var spotFinder = function(player, position, board) {
   for (var i = 0; i < board.length; i++) {
       if (board[i] === position) {
         board[i] = player
-        console.log(board);
         return;
       }
-  } console.log(board); return;
+  } return;
 }
+
+var player = 'X';
+
 // create a function to allow moves
 var makeMove = function (player, position) {
   for (var i = 0; i < arrays; i++) {
     var board = Board['s' + i.toString()]
     spotFinder(player, position, board)
   }
-}
+  checkPlayer(player);
+};

@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css?family=Reenie+Beanie);
+@font-face {
+    font-family: asfalto;
+    src: url(/Users/IRL/Projects/myProjects/media/Asfalto.ttf);
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: url("../media/blackboard.jpg");
+
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  height: 80vh;
+  width: 50%;
+  /*background-color: white;*/
+  /*margin: 100px 50px 50px 50px;*/
+  margin: 50px auto;
+}
+
+.main {
+  flex: 1;
+}
+
+.board {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  /*justify-content: space-between;*/
+  align-items: center;
+  /*background-color: white;*/
+}
+
+.spot {
+  max-width: 200px;
+  max-height: 150px;
+  margin: 5px;
+  line-height: 150px;
+  color: rgba(231, 43, 197, 0);
+  font-family: 'asfalto';
+  font-size: 110px;
+  text-align: center;
+  flex-grow: 1;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+
+
+.buttons {
+  padding: 35px;
+  max-width: 500px;
+  max-height: 150px;
+  margin: 5px;
+  color: black;
+  font-size: 12px;
+  text-align: center;
+  margin: 0 auto;
+  flex-grow: 1;
+  justify-content: center;
+  display: flex;
+
+}
+
+.button {
+  margin-top: 20px;
+}
+
+
+
+img {
+  height: 100px;
+}
+
+#X {
+  padding-right: 10px;
+}
+
+#O {
+  padding-left: 10px;
+}
+
+.board-img {
+  margin: 0 auto;
+  padding-top: 25px;
+}
+
+#xscore {
+  /*margin: 0 auto;*/
+  padding-right: 25px;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 95px;
+}
+
+#yscore {
+  /*margin: 0 auto;*/
+  padding-left: 25px;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 95px;
+}
+
+.chalk {
+  line-height: 20px;
+  font-size: 34px;
+  padding-top: 30px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Reenie Beanie', cursive;
+  color: rgba(255, 255, 255, 0.9);
+}
