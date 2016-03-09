@@ -63,10 +63,10 @@ $(document).ready(function() {
       // also changes the cursor to the other player
     if (player === 'X') {
       player = 'O'
-      $('body').css('cursor', 'url(/Users/IRL/Projects/myProjects/media/Ocursor.png), auto');
+      $('body').css('cursor', 'url(media/Ocursor.png), auto');
     } else if (player === 'O') {
       player = 'X';
-      $('body').css('cursor', 'url(/Users/IRL/Projects/myProjects/media/xcursor.png), auto');
+      $('body').css('cursor', 'url(media/xcursor.png), auto');
     }
   });
 
