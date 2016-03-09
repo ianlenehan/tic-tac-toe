@@ -76,15 +76,15 @@ $(document).ready(function() {
   });
 
   $('#theme-sydney').on('click', function() {
-    $('body').css('background-image', 'url(media/sydney.jpg)');
+    $('body').css('background-image', 'url(media/Sydney.jpg)');
   });
 
   $('#theme-dublin').on('click', function() {
-    $('body').css('background-image', 'url(media/dublin.jpg)');
+    $('body').css('background-image', 'url(media/Dublin.jpg)');
   });
 
   $('#theme-africa').on('click', function() {
-    $('body').css('background-image', 'url(media/africa.jpg)');
+    $('body').css('background-image', 'url(media/Africa.jpg)');
   });
 });
 
