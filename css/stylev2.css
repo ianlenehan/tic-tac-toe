@@ -9,8 +9,9 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background: url("../media/blackboard.jpg");
-
+  background-size: cover;
 }
+
 
 .container {
   display: flex;
@@ -53,8 +54,6 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   padding-top: 25px;
 }
-
-
 
 .buttons {
   padding: 35px;
@@ -133,27 +132,35 @@ img {
   font-size: 24px;
 }
 
-/*.right {
-  width: 100px;
-}*/
+.left {
+  font-family: 'asfalto';
+  font-size: 48px;
+  line-height: 70px;
+}
 #tp {
   color: rgba(255,255,255,0.8);
   border: solid rgba(255,255,255,0.8) 1px;
 }
 
-.mode {
+.mode, .theme {
   border-radius: 3px;
   font-family: Arial;
   color: rgba(255,255,255,0.5);
   font-size: 14px;
-  background: rgba(248, 247, 250, 0);
+  background: rgba(248, 247, 250, 0.2);
   padding: 10px 20px 10px 20px;
   border: solid rgba(255,255,255,0.5) 1px;
   text-decoration: none;
   margin: 10px auto;
+  width: 100px;
+  height: 54px;
 }
 
-.mode:hover {
+.mode:hover, .theme:hover {
   border: solid rgba(255,255,255,1) 1px;
   text-decoration: none;
+}
+
+.mode:focus, .theme:focus {
+  outline:0;
 }
