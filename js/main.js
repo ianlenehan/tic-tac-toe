@@ -45,11 +45,8 @@ $(document).ready(function() {
   $('.spot').on('click', function() {
     // checks to make sure the spot isn't already taken by X or O
     if ($(this).text() === 'X' || $(this).text() === 'O') {
-      swal({
-        title: "Error!",
-        text: "This spot is taken, thank you very much.",
-        imageUrl: "media/XO.png"
-      });
+      $(this).removeClass('animated rotateIn');
+      $(this).addClass('animated shake');
       return false;
     }
     // changes the text in the selected square to white and to either X or O
