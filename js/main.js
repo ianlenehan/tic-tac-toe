@@ -56,6 +56,7 @@ $(document).ready(function() {
     $(this).text(player).css({
       'color': 'white'
     });
+    $(this).addClass('animated rotateIn');
     // gets the board position based on the <li> id and then runs the makeMove function with the player and the position
     var position = $(this).attr('id');
     makeMove(player, position)

@@ -144,11 +144,11 @@ img {
 
 .mode, .theme {
   border-radius: 3px;
-  font-family: Arial;
+  font-family: 'asfalto';
   color: rgba(255,255,255,0.5);
-  font-size: 14px;
-  background: rgba(248, 247, 250, 0.2);
-  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  background: rgba(248, 247, 250, 0.1);
+  padding: 14px 20px 10px 20px;
   border: solid rgba(255,255,255,0.5) 1px;
   text-decoration: none;
   margin: 10px auto;
